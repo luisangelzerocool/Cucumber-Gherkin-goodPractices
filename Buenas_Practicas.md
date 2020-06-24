@@ -1,0 +1,64 @@
+# BUENAS PRACTICAS USANDO CUCUMBER CON LENGUAJE GHERKIN
+
+## Escritura de Escenarios de pruebas
+Mala práctica:
+![malapractica](/screenshots/malapractica.png)
+
+Es mejor evitar escribir los escenarios de esta manera pues los hace muy largos, con muchos detalles 
+innecesarios y difícil de leer y entender. Otra desventaja de escribirlos así es que los hace difíciles 
+de mantener, ya que al mínimo cambio que tengamos que hacer al comportamiento es muy probable que tengamos
+que modificar muchos pasos en el escenario. Una forma más resumida, descriptiva y clara de escribir el escenario.
+
+Práctica Medio Buena:
+![practicamediobuena](/screenshots/practicamediobuena.png)
+
+
+Práctica más recomendable:
+![practicabuena](/screenshots/practicabuena.png)
+
+
+### Recomendaciones:
+* Las sentencias se deben escribir en orden Given-When-Then. Esto es porque Given representa una precondición, 
+When una acción y Then un resultado o consecuencia de la acción (criterio de aceptación del usuario). Por lo 
+que escribir un When después del Then, por ejemplo, no estaría bien conceptualmente y no sería muy claro.
+
+* Tampoco deberían repetirse los Given-When-Then por escenario, para extender cualquiera de las sentencias se 
+utiliza And. El motivo de ésto es que un escenario representa un comportamiento individual, y si definimos algo 
+del estilo: Given-When-Then-When…, seguramente podemos dividirlo en más de un escenario.
+
+* Las sentencias tienen que ser consistentes entre sí y con la descripción del escenario, o sea, si la 
+descripción del escenario está escrita en primera persona las sentencias también deberían escribirse en primera persona
+
+* Es muy importante que los escenarios sean lo más independientes entre sí mientras sea posible, es decir: no puede 
+pasar que se acoplen escenarios. Por ejemplo, no es conveniente que si en un escenario insertamos registros en una base 
+de datos, el resultado de escenarios siguientes dependan de la existencia de esos registros. Tener escenarios acoplados 
+puede generar errores, por ejemplo, si tenemos que ejecutarlos en paralelo, o si uno falla.
+
+
+# ¿Cómo separar los archivos?
+
+¿Cómo separar los archivos?
+Al separar los features la cantidad de archivos puede llegar a ser enorme, entonces hay que pensar cómo hacer la división 
+de features en diferentes archivos. 
+
+Una opción muy usada es tener un archivo con las features que agrupen todo lo relacionado con un aspecto de la aplicación, 
+e incluso organizar en directorios. 
+
+En un caso concreto, para un sistema que maneja facturas, podríamso tener esto:
+![organizararchivos](/screenshots/organizararchivos.png)
+
+    >facturas
+      cargarfactura.feature
+      eliminarfactura.feature
+      cancelarfactura.feature
+      modificarfactura.feature
+
+Así se organiza mejor y es más fácil ubicar cada test y dónde encontrar cada cosa.
+
+
+# Conclusión
+Lo importante es mantener la consistencia entre la descripción del escenario y sus pasos (no alternar personas gramaticales), respetar los criterios 
+utilizados en el caso de que estemos agregando escenarios a un proyecto ya existente y favorecer la claridad de lo que se escribe.
+
+
+
