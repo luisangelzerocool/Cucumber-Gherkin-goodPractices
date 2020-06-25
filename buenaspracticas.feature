@@ -98,3 +98,28 @@ Característica: Creacion Contrato Proveedor en aplicativo
     | src/test/resources/datadriven/expediente/ContratoProveedor.xlsx |
 
 
+
+
+
+
+
+
+@RegressionTest
+Característica: Extracción de dinero 
+
+    Antecedentes: extraer dinero
+        Dado que La tarjeta de crédito está habilitada
+        Y  El saldo disponible en mi cuenta es positivo 
+        Y  El cajero tiene suficiente dinero
+
+    @SmokeTest
+    Escenario: digitar valor de la transacción
+        Cuando digito el valor de mi transacción
+        Entonces me muestra una ventana de confirmación
+
+
+    Escenario: confirmar retiro
+        Cuando confirmo el retiro 
+        Entonces me sale una ventana de retiro de dinero
+
+        
